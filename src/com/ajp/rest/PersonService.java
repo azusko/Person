@@ -37,17 +37,17 @@ public class PersonService {
 	@Path("upload")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadFile(@FormDataParam("file") InputStream uploadedInputStream, @FormDataParam("file") FormDataContentDisposition fileDetail) {
-		PersonReader personReader = new PersonReader(); 
+		PersonReader personReader = new PersonReader();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(uploadedInputStream));
 		List<Person> uploaded = new ArrayList<Person>();
 		String line = null;
 		try {
-			while ((line = reader.readLine())!=null) {
+			while ((line = reader.readLine()) != null) {
 				Person person = personReader.processLine(line);
 				if (person != null)
 					uploaded.add(personReader.processLine(line));
 			}
-			
+
 		} catch (IOException e) {
 			return Response.status(200).entity("File upload error").build();
 		}
@@ -59,7 +59,6 @@ public class PersonService {
 		return Response.status(200).entity("OK").build();
 	}
 
-	
 	@GET
 	@Path("gender")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -89,7 +88,7 @@ public class PersonService {
 			resultList.addAll(persons);
 		}
 		Collections.sort(resultList, comparator);
-		String result = null; 
+		String result = null;
 		try {
 			result = mapper.writeValueAsString(resultList);
 		} catch (IOException e) {
@@ -97,5 +96,5 @@ public class PersonService {
 		}
 		return result;
 	}
-	
+
 }

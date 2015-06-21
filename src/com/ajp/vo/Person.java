@@ -3,8 +3,10 @@ package com.ajp.vo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import com.ajp.vo.serializer.CustomDateDeserializer;
 import com.ajp.vo.serializer.CustomDateSerializer;
 
 public class Person {
@@ -16,6 +18,7 @@ public class Person {
 	private boolean gender;
 	private String color;
 	@JsonSerialize(using = CustomDateSerializer.class)
+	@JsonDeserialize(using = CustomDateDeserializer.class)
 	private Date birth;
 	
 	public Person(String firstName, String lastName, boolean gender, String color, Date birth) {
@@ -26,6 +29,9 @@ public class Person {
 		this.birth = birth;
 	}
 
+	public Person() {
+	}
+	
 	public String toString() {
 		return "firstName = ["+firstName+"], lastName = ["+lastName+"], gender = ["+(gender?"M":"F")+"], color = ["+color+"], birth = ["+formatter.format(birth)+"]";
 	}

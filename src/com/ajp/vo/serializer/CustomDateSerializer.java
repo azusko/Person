@@ -5,21 +5,15 @@ import java.util.Date;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.SerializerProvider;
-import org.codehaus.jackson.map.ser.std.SerializerBase;
 
 import com.ajp.vo.Person;
 
-public class CustomDateSerializer extends SerializerBase<Date> {
-
-	public CustomDateSerializer() {
-		super(Date.class, true);
-	}
+public class CustomDateSerializer extends JsonSerializer<Date> {
 
 	@Override
-	public void serialize(Date value, JsonGenerator jgen,
-			SerializerProvider provider) throws IOException,
-			JsonGenerationException {
+	public void serialize(Date value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonGenerationException {
 		String format = Person.formatter.format(value);
 		jgen.writeString(format);
 	}
