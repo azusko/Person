@@ -1,5 +1,5 @@
 Andrey Zusko M black 7/18/1976
 
-Pavel Zusko M yellow 4/15/1979
+Pavel Zusko M golden 4/15/1979
 John,Smith,M,black,10/18/1924
 Elena|Zusko|F|red|7/6/1979

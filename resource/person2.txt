@@ -1,0 +1,5 @@
+Andrey Zusko M yellow 7/18/1976
+
+Pavel Zusko M brown 4/15/1979
+John,Smith,M,black,10/18/1924
+Elena|Zusko|F|red|7/6/1979
